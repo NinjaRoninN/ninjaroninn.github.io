@@ -135,7 +135,6 @@ transform:scale(1.05);
 box-shadow:0 5px 15px rgba(255,64,129,0.6);
 }
 
-.email{background:#333}
 .twitter{background:#1DA1F2}
 .discord{background:#7289DA}
 .drive{background:#0F9D58}
@@ -205,7 +204,6 @@ margin-top:3em;
 <a href="#about">About</a>
 <a href="#gallery">Gallery</a>
 <a href="#contact">Contact</a>
-<a href="#comments">Comments</a>
 </nav>
 
 </header>
@@ -236,7 +234,6 @@ Digital artist focused on Web3 and NFTs
 <section id="contact">
 <h2>Contact</h2>
 <div class="button-container">
-<a href="mailto:dktattoost@gmail.com" class="email"><i class="fa-solid fa-envelope"></i>Email</a>
 <a href="https://twitter.com/NinjaRoninN" target="_blank" class="twitter"><i class="fa-brands fa-twitter"></i>@NinjaRoninN</a>
 <a href="https://discord.com/users/1091106407832621157" target="_blank" class="discord">
   <i class="fa-brands fa-discord"></i> @ninja_ronin
@@ -245,22 +242,14 @@ Digital artist focused on Web3 and NFTs
 </div>
 </section>
 
-<section id="comments">
-<h2>Comments</h2>
-<div class="comment-form">
-<input type="text" id="name" placeholder="Your name">
-<textarea id="comment" placeholder="Your comment"></textarea>
-<button id="submitComment">Submit</button>
-</div>
-<div class="comment-list"></div>
-</section>
+
 
 <div class="modal" id="modal">
 <img src="">
 </div>
 
 <footer>
-© 2026 NinjaRonin. All rights reserved.
+© 2026 NinjaRonin.
 </footer>
 
 <script>
@@ -272,19 +261,7 @@ img.onclick=()=>{modal.style.display='flex';modalImg.src=img.src;}
 });
 modal.onclick=()=>modal.style.display='none';
 
-// COMMENTS
-document.getElementById('submitComment').onclick=()=>{
-const name=document.getElementById('name').value.trim();
-const comment=document.getElementById('comment').value.trim();
-if(!name||!comment)return;
-const div=document.createElement('div');
-div.className='comment-item';
-div.innerHTML=`<strong>${name}:</strong><p>${comment}</p>`;
-document.querySelector('.comment-list').prepend(div);
-document.getElementById('name').value='';
-document.getElementById('comment').value='';
-};
-</script>
+
 
 </body>
 </html>
