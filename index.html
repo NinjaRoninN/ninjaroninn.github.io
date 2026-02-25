@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Digital Portfolio</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* --- Header --- */
+    header {
+      background:#111;
+      color:white;
+      padding:4em 1em 2em 1em; /* espacio suficiente arriba para el avatar */
+      text-align:center;
+      border-bottom:3px solid #ff4081;
+      position:relative;
+    }
+
+    /* --- Avatar circular --- */
+    .profile-container {
+      position:absolute;
+      top:-60px; /* sube el avatar */
+      left:50%;  /* centrado horizontal */
+      transform:translateX(-50%);
+    }
+    .profile-pic {
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      border:4px solid #ff4081;
+      object-fit:cover;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Header */
+    header {
+      background:#111;
+      color:white;
+      padding:2em 1em;
+      text-align:center;
+      border-bottom:3px solid #ff4081;
+    }
+    header h1 { font-size:2.5em; color:#ff4081; }
+    nav { margin-top:1em; }
+    nav a {
+      color:white;
+      text-decoration:none;
+      margin:0 1em;
+      font-weight:bold;
+      transition: color 0.3s;
+    }
+    nav a:hover { color:#ff79b0; }
+
+    /* Sections */
+    section { max-width:1000px; margin:3em auto; padding:0 1em; }
+    h2 { text-align:center; margin-bottom:1em; font-size:2em; }
+
+    /* Gallery */
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:1em;
+    }
+    .gallery img {
+      width:100%;
+      border-radius:10px;
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery img:hover {
+      transform:scale(1.05);
+      box-shadow:0 10px 20px rgba(255,64,129,0.5);
+    }
+
+    /* Buttons */
+    .button-container { display:flex; gap:1em; flex-wrap:wrap; justify-content:center; margin-top:1em; }
+    .button-container a, .button-container span {
+      padding:0.7em 1.5em;
+      border-radius:25px;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      gap:0.5em;
+      font-weight:bold;
+      color:white;
+      transition:transform 0.2s;
+    }
+    .button-container a:hover { transform:scale(1.05); }
+    .button-container span:hover { transform:scale(1.05); cursor:default; }
+
+    .email { background:#333; }
+    .twitter { background:#1DA1F2; }
+    .discord { background:#7289DA; }
+    .drive { background:#0F9D58; }
+
+    /* Footer */
+    footer {
+      background:#111;
+      color:#888;
+      text-align:center;
+      padding:1.5em 1em;
+      border-top:3px solid #ff4081;
+      margin-top:3em;
+    }
+
+    @media(max-width:600px) {
+      header h1 { font-size:2em; }
+      h2 { font-size:1.5em; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Profile Avatar -->
+  <div class="profile-container">
+    <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>My Digital Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p style="text-align:center; font-size:1.2em; max-width:700px; margin:auto;">
+      I’m a digital artist focused on Web3, creating illustrations and digital art for NFTs.  
+      I enjoy combining creativity and technology to tell unique stories.
+    </p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="obra1.jpg" alt="Artwork 1">
+      <img src="obra2.jpg" alt="Artwork 2">
+      <img src="obra3.jpg" alt="Artwork 3">
+      <!-- Add more images as needed -->
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p style="text-align:center;">Let’s connect! Click a button:</p>
+    <div class="button-container">
+      <!-- Email -->
+      <a href="mailto:dktattoost@gmail.com" class="email">
+        <i class="fa-solid fa-envelope"></i> Email
+      </a>
+
+      <!-- Twitter -->
+      <a href="https://twitter.com/NinjaRoninN" target="_blank" class="twitter">
+        <i class="fa-brands fa-twitter"></i> @NinjaRoninN
+      </a>
+
+      <!-- Discord -->
+      <span class="discord">
+        <i class="fa-brands fa-discord"></i> @ninja_ronin
+      </span>
+
+      <!-- Google Drive -->
+      <a href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp" target="_blank" class="drive">
+        <i class="fa-brands fa-google-drive"></i> See More
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 NinjaRonin. All rights reserved.
+  </footer>
+
+</body>
+</html>
