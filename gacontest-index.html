@@ -185,12 +185,39 @@ font-size:15px;
 header{font-size:26px;}
 h2{font-size:22px;}
 }
+
+/* HERO HEADER (BANNER) */
+.hero {
+    text-align: center;
+    padding: 110px 20px;
+    background: 
+        linear-gradient(rgba(5,10,25,0.65), rgba(5,10,25,0.9)),
+        url("gacontest_header.png") center/cover no-repeat;
+    border-bottom: 2px solid #3b82f6;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-shadow: 0 5px 25px rgba(0,0,0,0.8);
+}
+
+.hero p {
+    font-size: 22px;
+    color: #93c5fd;
+    text-shadow: 0 3px 15px rgba(0,0,0,0.7);
+}
 </style>
 </head>
 
 <body>
 <div class="overlay">
-<header>🏆 Grand Arena Moku - Contest Guide</header>
+<header class="hero">
+    <h1>🏆 Grand Arena Moku</h1>
+    <p>Contest Guide</p>
+</header>
 <div class="container">
 
 <!-- WHAT ARE CONTESTS -->
