@@ -24,7 +24,9 @@ body {
 .hero {
   text-align: center;
   padding: 120px 20px 80px;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+  background: 
+    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
+    url("header_banner.png") center/cover no-repeat;
 }
 
 .hero h1 {
@@ -301,7 +303,7 @@ footer h2 {
     <img src="obra7.png">
     <img src="obra8.png">
     <img src="obra9.png">
-    <img src="obra10.jpg">
+    <img src="obra10.png">
 
     <span class="arrow right" onclick="nextSlide()">❯</span>
   </div>
@@ -361,25 +363,32 @@ footer h2 {
 <!-- FOOTER -->
 <footer>
   <h2>NinjaRoninN</h2>
+
   <a class="footer-btn" href="https://x.com/NinjaRoninN" target="_blank">X</a>
-  <a class="footer-btn" href="#">Discord</a>
-  <button class="footer-btn" onclick="openWallet()">Support</button>
+
+  <a class="footer-btn" href="https://discord.com/users/1091106407832621157" target="_blank">
+    Discord
+  </a>
+
+  <button class="footer-btn" onclick="openWalletPopup()">Support</button>
 </footer>
 
 <!-- WALLET POPUP -->
 <div id="walletPopup">
   <div id="walletContent">
     <h3>Support the Creator</h3>
-    <input type="text" value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
+    <input type="text" id="walletAddress"
+      value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
+    <br><br>
     <button onclick="copyWallet()">Copy Wallet</button>
-    <button onclick="closeWallet()" style="background:red;margin-left:10px;">Close</button>
+    <button onclick="closeWalletPopup()" style="background:red;margin-left:10px;">Close</button>
   </div>
 </div>
 
 </div>
 
 <script>
-/* CAROUSEL INFINITE */
+/* ===== CAROUSEL ===== */
 let index = 0;
 const slides = document.querySelectorAll("#carousel img");
 
@@ -398,7 +407,7 @@ function prevSlide(){
   showSlide(index);
 }
 
-/* DROPDOWN GUIDES */
+/* ===== DROPDOWN GUIDES ===== */
 function toggleGuides(){
   document.getElementById("guidesMenu").classList.toggle("show");
 }
@@ -407,18 +416,19 @@ function toggleSub(id){
   document.getElementById(id).classList.toggle("active");
 }
 
-/* WALLET */
-function openWallet(){
+/* ===== WALLET ===== */
+function openWalletPopup() {
   document.getElementById("walletPopup").style.display = "block";
 }
 
-function closeWallet(){
+function closeWalletPopup() {
   document.getElementById("walletPopup").style.display = "none";
 }
 
-function copyWallet(){
-  navigator.clipboard.writeText("0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab");
-  alert("Wallet copied!");
+function copyWallet() {
+  const wallet = document.getElementById("walletAddress").value;
+  navigator.clipboard.writeText(wallet);
+  alert("Wallet copied to clipboard!");
 }
 </script>
 </body>
