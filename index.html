@@ -106,6 +106,7 @@ body {
   box-shadow: 0 0 40px #3b82f6;
 }
 
+/* ===== ARROWS ===== */
 .arrow {
   position: absolute;
   top: 50%;
@@ -117,7 +118,11 @@ body {
   cursor: pointer;
   user-select: none;
   transition: 0.3s;
+  z-index: 5;
 }
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
 
 .arrow:hover {
   background: #3b82f6;
@@ -161,7 +166,7 @@ body {
 }
 
 .dropdown-content {
-  display: none; /* hidden by default */
+  display: none;
   position: absolute;
   background: rgba(15,23,42,0.75);
   backdrop-filter: blur(6px);
@@ -173,7 +178,7 @@ body {
 }
 
 .dropdown-content.show {
-  display: flex; /* show when active */
+  display: flex;
 }
 
 .dropdown-content button {
@@ -296,7 +301,7 @@ body {
 
 <!-- HERO -->
 <header class="hero">
-  <div class="avatar-hex"><img src="pfp.png" alt="NFT Avatar"></div>
+  <div class="avatar-hex"><img src="profile.jpg" alt="NFT Avatar"></div>
   <h1>NinjaRoninN</h1>
   <p>Content Creator & Guides</p>
 </header>
@@ -309,6 +314,13 @@ body {
     <img src="obra1.png" class="active">
     <img src="obra2.png">
     <img src="obra3.png">
+    <img src="obra4.png">
+    <img src="obra5.png">
+    <img src="obra6.png">
+    <img src="obra7.png">
+    <img src="obra8.png">
+    <img src="obra9.png">
+    <img src="obra10.png">
     <span class="arrow right" onclick="nextPortfolio()">❯</span>
   </div>
   <a href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp" target="_blank" class="portfolio-link-btn">Go to Full Portfolio</a>
