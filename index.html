@@ -47,6 +47,7 @@ body {
   text-shadow: 0 3px 15px rgba(0,0,0,0.7);
 }
 
+/* ===== AVATAR HEX FLOAT ===== */
 .avatar-hex {
   width: 180px;
   height: 180px;
@@ -55,12 +56,13 @@ body {
   overflow: hidden;
   border: 5px solid #3b82f6;
   box-shadow: 0 0 30px #3b82f6;
-  transition: transform 0.5s, box-shadow 0.5s;
+  animation: float 3s ease-in-out infinite;
 }
 
-.avatar-hex:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #60a5fa, 0 0 60px #3b82f6;
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
 }
 
 .avatar-hex img {
@@ -94,11 +96,11 @@ body {
 }
 
 .carousel img {
-  width: 100%;
+  width: auto;
   height: 400px; /* altura uniforme */
-  object-fit: cover; /* recorta sin deformar */
-  border-radius: 16px;
+  object-fit: contain; /* sin recortar */
   display: none;
+  border-radius: 16px;
   transition: transform 0.5s, box-shadow 0.5s;
 }
 
@@ -183,7 +185,7 @@ body {
   display: flex;
 }
 
-.dropdown-content button {
+.dropdown-content button, .dropdown-content a {
   background: none;
   border: none;
   cursor: pointer;
@@ -193,19 +195,19 @@ body {
   transition: opacity 0.5s, transform 0.5s;
 }
 
-.dropdown-content.show button {
+.dropdown-content.show button, .dropdown-content.show a {
   opacity: 1;
   transform: translateY(0);
 }
 
-.dropdown-content button img {
+.dropdown-content button img, .dropdown-content a img {
   width: 180px;
   height: 70px;
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.dropdown-content button img:hover {
+.dropdown-content button img:hover, .dropdown-content a img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px #3b82f6;
 }
@@ -225,13 +227,20 @@ body {
   max-height: 500px;
 }
 
-/* ===== SOCIAL + WALLET ===== */
-.social-support {
+/* ===== FOOTER ===== */
+footer {
   text-align: center;
-  margin: 50px auto 40px auto;
+  margin-top:50px;
+  padding:40px 20px;
+  background: rgba(10,15,30,0.8);
 }
 
-.social-support a, .social-support button {
+footer h2 {
+  margin-bottom:15px;
+  color:#60a5fa;
+}
+
+footer a, footer button {
   display: inline-block;
   margin: 5px;
   padding: 14px 26px;
@@ -243,7 +252,7 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.social-support a:hover, .social-support button:hover {
+footer a:hover, footer button:hover {
   transform: scale(1.07);
   box-shadow: 0 0 30px #3b82f6;
 }
@@ -294,7 +303,7 @@ body {
 @media(max-width:768px){
   .hero h1{font-size:38px;}
   .hero p{font-size:20px;}
-  .dropdown-content button img,.carousel img{width:140px;height:55px;}
+  .dropdown-content button img,.dropdown-content a img,.carousel img{width:140px;height:55px;}
 }
 </style>
 </head>
@@ -336,23 +345,24 @@ body {
     <div class="dropdown-content" id="guideDropdown">
       <button onclick="toggleSub('mokuSubs')"><img src="button_moku.png"></button>
       <div class="sub-buttons" id="mokuSubs">
-        <button><img src="moku_guide1.png"></button>
-        <button><img src="moku_guide2.png"></button>
+        <a href="#"><img src="moku_guide1.png"></a>
+        <a href="#"><img src="moku_guide2.png"></a>
       </div>
       <button onclick="toggleSub('moreSubs')"><img src="button_more.png"></button>
       <div class="sub-buttons" id="moreSubs">
-        <button><img src="more_guide1.png"></button>
+        <a href="#"><img src="more_guide1.png"></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL + WALLET -->
-<section class="social-support">
+<!-- FOOTER -->
+<footer>
+  <h2>NinjaRoninN</h2>
   <a href="https://x.com/NinjaRoninN">X</a>
   <a href="https://discord.gg/...">Discord</a>
   <button onclick="showWallet()">Support</button>
-</section>
+</footer>
 
 <!-- WALLET POPUP -->
 <div id="walletPopup">
