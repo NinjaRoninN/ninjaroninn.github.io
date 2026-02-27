@@ -10,23 +10,20 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
-  background: url("background.png") center/cover no-repeat fixed;
   color: white;
   overflow-x: hidden;
-}
-
-.overlay {
-  background: rgba(10, 15, 30, 0.45);
-  min-height: 100vh;
+  /* Fondo general con overlay negro */
+  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url("background.png") center/cover no-repeat fixed;
 }
 
 /* ===== HERO / HEADER ===== */
 .hero {
   text-align: center;
   padding: 120px 20px 80px;
-  background: 
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)),
-    url("header_banner.png") center/cover no-repeat;
+  /* Overlay negro semitransparente sobre header */
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url("header_banner.png") center/cover no-repeat;
 }
 
 .hero h1 {
@@ -69,7 +66,10 @@ body {
   max-width: 1100px;
   margin: 60px auto;
   text-align: center;
-  padding: 0 20px;
+  padding: 40px 20px;
+  /* Fondo negro semitransparente para destacar contenido */
+  background: rgba(15,23,42,0.75);
+  border-radius: 16px;
 }
 
 .section h2 {
@@ -310,7 +310,7 @@ footer h2 {
     <img src="obra7.png">
     <img src="obra8.png">
     <img src="obra9.png">
-    <img src="obra10.jpg">
+    <img src="obra10.png">
     <span class="arrow right" onclick="nextSlide()">❯</span>
   </div>
 
@@ -376,8 +376,6 @@ footer h2 {
     <button id="copyBtn">Copy Wallet</button>
     <button id="closeBtn" style="background:red;margin-left:10px;">Close</button>
   </div>
-</div>
-
 </div>
 
 <script>
