@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NinjaRoninN - Creator Profile</title>
+
 <style>
 /* ===== GLOBAL ===== */
 body {
@@ -15,54 +16,38 @@ body {
 }
 
 .overlay {
-  background: rgba(10,15,30,0.35);
+  background: rgba(10, 15, 30, 0.45);
   min-height: 100vh;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO / HEADER ===== */
 .hero {
   text-align: center;
-  padding: 140px 20px 80px 20px;
-  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)),
-              url("header_banner.png") center/cover no-repeat;
-  position: relative;
-  overflow: hidden;
+  padding: 120px 20px 80px;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6));
 }
 
 .hero h1 {
-  font-size: 52px;
+  font-size: 48px;
   margin: 10px 0;
-  letter-spacing: 1px;
   text-shadow: 0 5px 25px rgba(0,0,0,0.9);
-  transition: 0.5s;
-}
-
-.hero h1:hover {
-  text-shadow: 0 0 20px #3b82f6, 0 0 40px #60a5fa;
 }
 
 .hero p {
-  font-size: 24px;
+  font-size: 22px;
   color: #93c5fd;
-  text-shadow: 0 3px 15px rgba(0,0,0,0.7);
 }
 
-/* ===== AVATAR HEX FLOAT ===== */
+/* ===== FLOATING HEX AVATAR ===== */
 .avatar-hex {
   width: 180px;
   height: 180px;
   margin: 0 auto 25px;
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
   overflow: hidden;
-  border: 5px solid #3b82f6;
-  box-shadow: 0 0 30px #3b82f6;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0); }
+  border: 4px solid #3b82f6;
+  box-shadow: 0 0 35px #3b82f6;
+  animation: float 4s ease-in-out infinite;
 }
 
 .avatar-hex img {
@@ -71,32 +56,36 @@ body {
   object-fit: cover;
 }
 
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
 /* ===== SECTIONS ===== */
 .section {
   max-width: 1100px;
-  margin: 50px auto;
+  margin: 60px auto;
   text-align: center;
+  padding: 0 20px;
 }
 
 .section h2 {
+  font-size: 30px;
   color: #60a5fa;
-  border-left: 6px solid #3b82f6;
-  padding-left: 12px;
   margin-bottom: 25px;
-  text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
-/* ===== CAROUSEL ===== */
+/* ===== PORTFOLIO CAROUSEL ===== */
 .carousel {
   position: relative;
-  max-width: 700px;
-  height: 400px;
-  margin: 0 auto 20px;
+  max-width: 750px;
+  height: 420px;
+  margin: 0 auto 25px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 16px;
 }
 
 .carousel img {
@@ -105,28 +94,27 @@ body {
   object-fit: contain;
   display: none;
   border-radius: 16px;
-  transition: transform 0.5s, box-shadow 0.5s;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .carousel img.active {
   display: block;
-  transform: scale(1);
-  box-shadow: 0 0 40px #3b82f6;
+  box-shadow: 0 0 40px rgba(59,130,246,0.6);
 }
 
-/* ===== ARROWS ===== */
+/* ARROWS */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 38px;
+  font-size: 34px;
   background: rgba(0,0,0,0.6);
-  padding: 14px 18px;
+  padding: 12px 18px;
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
   transition: 0.3s;
-  z-index: 5;
+  z-index: 10;
 }
 
 .arrow.left { left: 10px; }
@@ -137,128 +125,111 @@ body {
   transform: translateY(-50%) scale(1.15);
 }
 
-/* Portfolio Button */
-.portfolio-link-btn {
-  padding: 16px 32px;
-  background: linear-gradient(135deg,#3b82f6,#2563eb);
-  color: white;
-  border-radius: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.portfolio-link-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 35px #3b82f6;
-}
-
-/* ===== GUIDES ===== */
-.dropdown {
-  display: inline-block;
+/* ===== DYNAMIC IMAGE BUTTONS ===== */
+.img-button {
   position: relative;
-}
-
-.dropdown-btn {
-  padding: 16px 28px;
-  border-radius: 14px;
+  display: inline-block;
   border: none;
-  background: linear-gradient(135deg,#3b82f6,#2563eb);
+  background: none;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  padding: 0;
+  margin: 10px 0;
 }
 
-.dropdown-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 30px #3b82f6;
+.img-button img {
+  width: 200px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 16px;
+  transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
 }
 
+.img-button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: white;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.9);
+  pointer-events: none;
+}
+
+.img-button:hover img {
+  transform: scale(1.07);
+  filter: brightness(1.15);
+  box-shadow: 0 0 25px #3b82f6;
+}
+
+/* ===== DROPDOWN ===== */
 .dropdown-content {
   display: none;
-  position: absolute;
-  background: rgba(15,23,42,0.75);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  margin-top: 12px;
-  min-width: 200px;
   flex-direction: column;
-  z-index: 10;
+  align-items: center;
+  margin-top: 15px;
 }
 
 .dropdown-content.show {
   display: flex;
 }
 
-.dropdown-content button, .dropdown-content a {
-  background: none;
-  border: none;
-  cursor: pointer;
-  margin: 8px 0;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.dropdown-content.show button, .dropdown-content.show a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dropdown-content button img, .dropdown-content a img {
-  width: 180px;
-  height: 70px;
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.dropdown-content button img:hover, .dropdown-content a img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px #3b82f6;
-}
-
 .sub-buttons {
-  display: flex;
+  display: none;
   flex-direction: column;
-  gap: 12px;
   margin-top: 10px;
-  opacity: 0;
-  max-height: 0;
-  transition: opacity 0.5s, max-height 0.5s;
 }
 
 .sub-buttons.active {
-  opacity: 1;
-  max-height: 500px;
+  display: flex;
+}
+
+/* ===== PORTFOLIO LINK BUTTON ===== */
+.portfolio-link {
+  display: inline-block;
+  padding: 14px 30px;
+  background: linear-gradient(135deg,#3b82f6,#2563eb);
+  border-radius: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+.portfolio-link:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 30px #3b82f6;
 }
 
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
-  margin-top:50px;
-  padding:40px 20px;
-  background: rgba(10,15,30,0.8);
+  padding: 40px 20px;
+  background: rgba(10,15,30,0.85);
+  margin-top: 60px;
 }
 
 footer h2 {
-  margin-bottom:15px;
-  color:#60a5fa;
+  color: #60a5fa;
+  margin-bottom: 15px;
 }
 
-footer a, footer button {
+.footer-btn {
   display: inline-block;
-  margin: 5px;
-  padding: 14px 26px;
+  margin: 6px;
+  padding: 12px 24px;
   border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
   background: linear-gradient(135deg,#3b82f6,#2563eb);
   color: white;
-  transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-footer a:hover, footer button:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 30px #3b82f6;
+.footer-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 25px #3b82f6;
 }
 
 /* WALLET POPUP */
@@ -266,69 +237,61 @@ footer a:hover, footer button:hover {
   display: none;
   position: fixed;
   z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   background: rgba(0,0,0,0.75);
 }
 
-#walletPopupContent {
+#walletContent {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%,-50%);
   background: rgba(15,23,42,0.95);
   padding: 30px;
   border-radius: 18px;
   text-align: center;
-  max-width: 420px;
+  width: 90%;
+  max-width: 400px;
 }
 
-#walletPopupContent input {
+#walletContent input {
   width: 100%;
   padding: 12px;
-  font-size: 16px;
   border-radius: 8px;
   border: none;
-  margin-bottom: 15px;
   text-align: center;
+  margin-bottom: 15px;
 }
-
-#walletPopupContent button {
-  padding: 12px 22px;
-  font-size: 16px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  color: white;
-  background: #3b82f6;
-}
-
-#walletPopupContent button:hover { background:#2563eb; }
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:768px){
-  .hero h1{font-size:38px;}
-  .hero p{font-size:20px;}
-  .carousel img { max-height: 200px; width: auto; }
-  .dropdown-content button img, .dropdown-content a img {width:140px;height:55px;}
-  .portfolio-link-btn {padding: 12px 20px;}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 34px; }
+  .hero p { font-size: 18px; }
+  .carousel { height: 260px; }
+  .img-button img { width: 170px; height: 70px; }
 }
 </style>
 </head>
 <body>
 <div class="overlay">
 
-<!-- HERO -->
+<!-- HEADER -->
 <header class="hero">
-  <div class="avatar-hex"><img src="profile.jpg" alt="NFT Avatar"></div>
+  <div class="avatar-hex">
+    <img src="profile.jpg" alt="Profile">
+  </div>
   <h1>NinjaRoninN</h1>
-  <p>Content Creator & Guides</p>
+  <p>Content Creator • Guides • Portfolio</p>
 </header>
 
 <!-- PORTFOLIO -->
 <section class="section">
-  <h2>💼 Portfolio</h2>
-  <div class="carousel" id="portfolioCarousel">
-    <span class="arrow left" onclick="prevPortfolio()">❮</span>
+  <h2>Portfolio</h2>
+
+  <div class="carousel" id="carousel">
+    <span class="arrow left" onclick="prevSlide()">❮</span>
+
     <img src="obra1.png" class="active">
     <img src="obra2.png">
     <img src="obra3.png">
@@ -339,88 +302,123 @@ footer a:hover, footer button:hover {
     <img src="obra8.png">
     <img src="obra9.png">
     <img src="obra10.jpg">
-    <span class="arrow right" onclick="nextPortfolio()">❯</span>
+
+    <span class="arrow right" onclick="nextSlide()">❯</span>
   </div>
-  <a href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp" target="_blank" class="portfolio-link-btn">Go to Full Portfolio</a>
+
+  <a class="portfolio-link" target="_blank"
+     href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp">
+     View Full Portfolio
+  </a>
 </section>
 
 <!-- GUIDES -->
 <section class="section">
-  <h2>📚 Guides</h2>
-  <div class="dropdown">
-    <button class="dropdown-btn" onclick="toggleDropdown()">Guides ▼</button>
-    <div class="dropdown-content" id="guideDropdown">
-      <button onclick="toggleSub('mokuSubs')"><img src="button_moku.png"></button>
-      <div class="sub-buttons" id="mokuSubs">
-        <a href="#"><img src="moku_guide1.png"></a>
-        <a href="#"><img src="moku_guide2.png"></a>
-      </div>
-      <button onclick="toggleSub('moreSubs')"><img src="button_more.png"></button>
-      <div class="sub-buttons" id="moreSubs">
-        <a href="#"><img src="more_guide1.png"></a>
+  <h2>Guides</h2>
+
+  <!-- MAIN GUIDES BUTTON -->
+  <button class="img-button" onclick="toggleGuides()">
+    <img src="button_base.png">
+    <span>GUIDES</span>
+  </button>
+
+  <div id="guidesMenu" class="dropdown-content">
+
+    <!-- MOKU BUTTON -->
+    <button class="img-button" onclick="toggleSub('mokuMenu')">
+      <img src="button_base.png">
+      <span>MOKU</span>
+    </button>
+
+    <div id="mokuMenu" class="sub-buttons">
+      <a href="moku_guide1.html" class="img-button">
+        <img src="button_base.png">
+        <span>Contest Guide</span>
+      </a>
+
+      <a href="moku_guide2.html" class="img-button">
+        <img src="button_base.png">
+        <span>Beginner Guide</span>
+      </a>
+    </div>
+
+    <!-- MORE COMING SOON -->
+    <button class="img-button" onclick="toggleSub('moreMenu')">
+      <img src="button_base.png">
+      <span>COMING SOON</span>
+    </button>
+
+    <div id="moreMenu" class="sub-buttons">
+      <div class="img-button">
+        <img src="button_base.png">
+        <span>Future Guides</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <h2>NinjaRoninN</h2>
-  <a href="https://x.com/NinjaRoninN">X</a>
-  <a href="https://discord.gg/...">Discord</a>
-  <button onclick="showWallet()">Support</button>
+  <a class="footer-btn" href="https://x.com/NinjaRoninN" target="_blank">X</a>
+  <a class="footer-btn" href="#">Discord</a>
+  <button class="footer-btn" onclick="openWallet()">Support</button>
 </footer>
 
 <!-- WALLET POPUP -->
 <div id="walletPopup">
-  <div id="walletPopupContent">
+  <div id="walletContent">
     <h3>Support the Creator</h3>
     <input type="text" value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
-    <br>
     <button onclick="copyWallet()">Copy Wallet</button>
     <button onclick="closeWallet()" style="background:red;margin-left:10px;">Close</button>
-    <p style="font-size:14px;margin-top:10px;">Use this address in your Ronin wallet to send support.</p>
   </div>
 </div>
 
 </div>
 
 <script>
-/* WALLET */
-function showWallet(){ document.getElementById("walletPopup").style.display="block"; }
-function closeWallet(){ document.getElementById("walletPopup").style.display="none"; }
-function copyWallet(){
-  const input = document.querySelector("#walletPopupContent input");
-  navigator.clipboard.writeText(input.value).then(()=>alert("Wallet copied!"));
-}
+/* CAROUSEL INFINITE */
+let index = 0;
+const slides = document.querySelectorAll("#carousel img");
 
-/* PORTFOLIO CAROUSEL INFINITE */
-let portfolioIndex=0;
-const slides=document.querySelectorAll("#portfolioCarousel img");
-
-function showPortfolioSlide(i){
-  slides.forEach(s=>s.classList.remove("active"));
+function showSlide(i){
+  slides.forEach(s => s.classList.remove("active"));
   slides[i].classList.add("active");
 }
 
-function nextPortfolio(){
-  portfolioIndex=(portfolioIndex+1)%slides.length;
-  showPortfolioSlide(portfolioIndex);
+function nextSlide(){
+  index = (index + 1) % slides.length;
+  showSlide(index);
 }
 
-function prevPortfolio(){
-  portfolioIndex=(portfolioIndex-1+slides.length)%slides.length;
-  showPortfolioSlide(portfolioIndex);
+function prevSlide(){
+  index = (index - 1 + slides.length) % slides.length;
+  showSlide(index);
 }
 
-showPortfolioSlide(portfolioIndex);
-
-/* GUIDES DROPDOWN */
-function toggleDropdown(){
-  document.getElementById("guideDropdown").classList.toggle("show");
+/* DROPDOWN GUIDES */
+function toggleGuides(){
+  document.getElementById("guidesMenu").classList.toggle("show");
 }
+
 function toggleSub(id){
   document.getElementById(id).classList.toggle("active");
+}
+
+/* WALLET */
+function openWallet(){
+  document.getElementById("walletPopup").style.display = "block";
+}
+
+function closeWallet(){
+  document.getElementById("walletPopup").style.display = "none";
+}
+
+function copyWallet(){
+  navigator.clipboard.writeText("0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab");
+  alert("Wallet copied!");
 }
 </script>
 </body>
