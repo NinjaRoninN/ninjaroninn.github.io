@@ -227,6 +227,7 @@ footer h2 {
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .footer-btn:hover {
@@ -293,7 +294,6 @@ footer h2 {
 
   <div class="carousel" id="carousel">
     <span class="arrow left" onclick="prevSlide()">❮</span>
-
     <img src="obra1.png" class="active">
     <img src="obra2.png">
     <img src="obra3.png">
@@ -304,7 +304,6 @@ footer h2 {
     <img src="obra8.png">
     <img src="obra9.png">
     <img src="obra10.png">
-
     <span class="arrow right" onclick="nextSlide()">❯</span>
   </div>
 
@@ -325,7 +324,6 @@ footer h2 {
   </button>
 
   <div id="guidesMenu" class="dropdown-content">
-
     <!-- MOKU BUTTON -->
     <button class="img-button" onclick="toggleSub('mokuMenu')">
       <img src="button_base.png">
@@ -337,7 +335,6 @@ footer h2 {
         <img src="button_base.png">
         <span>Contest Guide</span>
       </a>
-
       <a href="moku_guide2.html" class="img-button">
         <img src="button_base.png">
         <span>Beginner Guide</span>
@@ -356,21 +353,15 @@ footer h2 {
         <span>Future Guides</span>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <h2>NinjaRoninN</h2>
-
   <a class="footer-btn" href="https://x.com/NinjaRoninN" target="_blank">X</a>
-
-  <a class="footer-btn" href="https://discord.com/users/1091106407832621157" target="_blank">
-    Discord
-  </a>
-
-  <button class="footer-btn" onclick="openWalletPopup()">Support</button>
+  <a class="footer-btn" href="https://discord.com/users/1091106407832621157" target="_blank">Discord</a>
+  <button class="footer-btn" id="supportBtn">Support</button>
 </footer>
 
 <!-- WALLET POPUP -->
@@ -380,8 +371,8 @@ footer h2 {
     <input type="text" id="walletAddress"
       value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
     <br><br>
-    <button onclick="copyWallet()">Copy Wallet</button>
-    <button onclick="closeWalletPopup()" style="background:red;margin-left:10px;">Close</button>
+    <button id="copyBtn">Copy Wallet</button>
+    <button id="closeBtn" style="background:red;margin-left:10px;">Close</button>
   </div>
 </div>
 
@@ -416,20 +407,40 @@ function toggleSub(id){
   document.getElementById(id).classList.toggle("active");
 }
 
-/* ===== WALLET ===== */
-function openWalletPopup() {
-  document.getElementById("walletPopup").style.display = "block";
-}
+/* ===== WALLET POPUP ===== */
+document.addEventListener("DOMContentLoaded", function(){
 
-function closeWalletPopup() {
-  document.getElementById("walletPopup").style.display = "none";
-}
+  const supportBtn = document.getElementById("supportBtn");
+  const walletPopup = document.getElementById("walletPopup");
+  const closeBtn = document.getElementById("closeBtn");
+  const copyBtn = document.getElementById("copyBtn");
+  const walletInput = document.getElementById("walletAddress");
 
-function copyWallet() {
-  const wallet = document.getElementById("walletAddress").value;
-  navigator.clipboard.writeText(wallet);
-  alert("Wallet copied to clipboard!");
-}
+  // OPEN POPUP
+  supportBtn.addEventListener("click", () => {
+    walletPopup.style.display = "block";
+  });
+
+  // CLOSE POPUP
+  closeBtn.addEventListener("click", () => {
+    walletPopup.style.display = "none";
+  });
+
+  // COPY WALLET
+  copyBtn.addEventListener("click", () => {
+    navigator.clipboard.writeText(walletInput.value)
+      .then(() => alert("Wallet copied to clipboard!"))
+      .catch(() => alert("Failed to copy wallet."));
+  });
+
+  // CLOSE WHEN CLICK OUTSIDE
+  walletPopup.addEventListener("click", (e) => {
+    if(e.target === walletPopup){
+      walletPopup.style.display = "none";
+    }
+  });
+
+});
 </script>
 </body>
 </html>
