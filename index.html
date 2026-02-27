@@ -8,52 +8,45 @@
 <style>
 /* ===== GLOBAL ===== */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  color: white;
-  overflow-x: hidden;
-  /* Fondo general con overlay negro */
-  background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-              url("background.png") center/cover no-repeat fixed;
+  margin:0;
+  font-family:'Segoe UI', Arial, sans-serif;
+  background:url("background.png") center/cover no-repeat fixed;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* ===== HERO / HEADER ===== */
+/* ===== HEADER HERO ===== */
 .hero {
-  text-align: center;
-  padding: 120px 20px 80px;
-  /* Overlay negro semitransparente sobre header */
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url("header_banner.png") center/cover no-repeat;
+  text-align:center;
+  padding:140px 20px 80px;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("header_banner.png") center/cover no-repeat;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin: 10px 0;
-  text-shadow: 0 5px 25px rgba(0,0,0,0.9);
+  font-size:52px;
+  margin:15px 0;
+  text-shadow:0 5px 25px rgba(59,130,246,0.8);
 }
 
 .hero p {
-  font-size: 22px;
-  color: #93c5fd;
+  font-size:22px;
+  color:#93c5fd;
+  text-shadow:0 3px 12px rgba(0,0,0,0.6);
 }
 
-/* ===== FLOATING HEX AVATAR ===== */
+/* ===== FLOATING HEX AVATAR WITH GLOW ===== */
 .avatar-hex {
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 25px;
+  width:180px;
+  height:180px;
+  margin:0 auto 25px;
   clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%);
-  overflow: hidden;
-  border: 4px solid #3b82f6;
-  box-shadow: 0 0 35px #3b82f6;
-  animation: float 4s ease-in-out infinite;
+  overflow:hidden;
+  border:4px solid #3b82f6;
+  box-shadow:0 0 35px #3b82f6;
+  animation: float 4s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
 }
 
-.avatar-hex img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.avatar-hex img { width:100%; height:100%; object-fit:cover; }
 
 @keyframes float {
   0% { transform: translateY(0px); }
@@ -61,236 +54,209 @@ body {
   100% { transform: translateY(0px); }
 }
 
-/* ===== SECTIONS ===== */
-.section {
-  max-width: 1100px;
-  margin: 60px auto;
-  text-align: center;
-  padding: 40px 20px;
-  /* Fondo negro semitransparente para destacar contenido */
-  background: rgba(15,23,42,0.75);
-  border-radius: 16px;
+@keyframes glow {
+  0% { box-shadow:0 0 25px #3b82f6; }
+  100% { box-shadow:0 0 45px #60a5fa; }
 }
 
+/* ===== SECTIONS ===== */
+.section {
+  max-width:1100px;
+  margin:60px auto;
+  text-align:center;
+  padding:50px 20px;
+  background: rgba(15,23,42,0.75);
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.section:hover {
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(59,130,246,0.5);
+}
 .section h2 {
-  font-size: 30px;
-  color: #60a5fa;
-  margin-bottom: 25px;
+  font-size:32px;
+  color:#60a5fa;
+  margin-bottom:30px;
 }
 
 /* ===== PORTFOLIO CAROUSEL ===== */
 .carousel {
-  position: relative;
-  max-width: 750px;
-  height: 420px;
-  margin: 0 auto 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  position:relative;
+  max-width:750px;
+  height:420px;
+  margin:0 auto 25px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:16px;
+  background: rgba(0,0,0,0.3);
 }
 
 .carousel img {
-  max-height: 100%;
-  width: auto;
-  object-fit: contain;
-  display: none;
-  border-radius: 16px;
+  max-height:100%;
+  width:auto;
+  object-fit:contain;
+  display:none;
+  border-radius:16px;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .carousel img.active {
-  display: block;
-  box-shadow: 0 0 40px rgba(59,130,246,0.6);
+  display:block;
+  box-shadow:0 0 50px #3b82f6;
 }
 
-/* ARROWS */
+/* CAROUSEL ARROWS */
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 34px;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:36px;
   background: rgba(0,0,0,0.6);
-  padding: 12px 18px;
-  border-radius: 50%;
-  cursor: pointer;
-  user-select: none;
-  transition: 0.3s;
-  z-index: 10;
+  padding:12px 18px;
+  border-radius:50%;
+  cursor:pointer;
+  user-select:none;
+  z-index:10;
 }
+.arrow.left { left:12px; }
+.arrow.right { right:12px; }
+.arrow:hover { background:#3b82f6; transform:translateY(-50%) scale(1.2); }
 
-.arrow.left { left: 10px; }
-.arrow.right { right: 10px; }
-
-.arrow:hover {
-  background: #3b82f6;
-  transform: translateY(-50%) scale(1.15);
-}
-
-/* ===== DYNAMIC IMAGE BUTTONS ===== */
+/* ===== IMAGE BUTTONS ===== */
 .img-button {
-  position: relative;
-  display: inline-block;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 0;
-  margin: 10px 0;
+  position:relative;
+  display:inline-block;
+  border:none;
+  background:none;
+  cursor:pointer;
+  margin:12px;
+  padding:0;
 }
-
 .img-button img {
-  width: 200px;
-  height: 80px;
-  object-fit: contain;
-  border-radius: 16px;
+  width:200px;
+  height:80px;
+  object-fit:contain;
+  border-radius:18px;
   transition: transform 0.3s, filter 0.3s, box-shadow 0.3s;
 }
-
 .img-button span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: bold;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: white;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.9);
-  pointer-events: none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-weight:bold;
+  font-size:18px;
+  color:white;
+  text-shadow:0 3px 12px rgba(0,0,0,0.9);
+  pointer-events:none;
 }
-
 .img-button:hover img {
-  transform: scale(1.07);
-  filter: brightness(1.15);
-  box-shadow: 0 0 25px #3b82f6;
+  transform:scale(1.08);
+  filter:brightness(1.15);
+  box-shadow:0 0 28px #3b82f6;
 }
 
-/* ===== DROPDOWN ===== */
-.dropdown-content {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 15px;
+/* DROPDOWN SLIDE-IN */
+.dropdown-content { display:none; flex-direction:column; align-items:center; margin-top:15px; }
+.dropdown-content.show { display:flex; animation: slideDown 0.3s ease; }
+.sub-buttons { display:none; flex-direction:column; margin-top:10px; }
+.sub-buttons.active { display:flex; animation: slideDown 0.3s ease; }
+
+@keyframes slideDown {
+  0% { transform: translateY(-10px); opacity:0; }
+  100% { transform: translateY(0); opacity:1; }
 }
 
-.dropdown-content.show {
-  display: flex;
-}
-
-.sub-buttons {
-  display: none;
-  flex-direction: column;
-  margin-top: 10px;
-}
-
-.sub-buttons.active {
-  display: flex;
-}
-
-/* ===== PORTFOLIO LINK BUTTON ===== */
+/* PORTFOLIO LINK BUTTON */
 .portfolio-link {
-  display: inline-block;
-  padding: 14px 30px;
+  display:inline-block;
+  padding:14px 32px;
   background: linear-gradient(135deg,#3b82f6,#2563eb);
-  border-radius: 14px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+  border-radius:16px;
+  font-weight:bold;
+  text-decoration:none;
+  color:white;
+  transition:0.3s;
+  box-shadow:0 0 20px #3b82f6;
 }
-
-.portfolio-link:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 30px #3b82f6;
-}
+.portfolio-link:hover { transform:scale(1.08); box-shadow:0 0 35px #3b82f6; }
 
 /* ===== FOOTER ===== */
 footer {
-  text-align: center;
-  padding: 40px 20px;
+  text-align:center;
+  padding:50px 20px;
   background: rgba(10,15,30,0.85);
-  margin-top: 60px;
+  margin-top:60px;
+  border-top:2px solid #3b82f6;
 }
-
-footer h2 {
-  color: #60a5fa;
-  margin-bottom: 15px;
-}
-
+footer h2 { color:#60a5fa; margin-bottom:20px; }
 .footer-btn {
-  display: inline-block;
-  margin: 6px;
-  padding: 12px 24px;
-  border-radius: 12px;
-  background: linear-gradient(135deg,#3b82f6,#2563eb);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
+  display:inline-block;
+  margin:8px;
+  padding:12px 26px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#3b82f6,#2563eb);
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+  cursor:pointer;
 }
-
-.footer-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 25px #3b82f6;
-}
+.footer-btn:hover { transform:scale(1.1); box-shadow:0 0 30px #3b82f6; }
 
 /* ===== WALLET POPUP ===== */
 #walletPopup {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  display:none;
+  position:fixed;
+  z-index:9999;
+  top:0; left:0;
+  width:100%; height:100%;
   background: rgba(0,0,0,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity 0.4s ease;
 }
-
+#walletPopup.show { display:flex; opacity:1; }
 #walletContent {
   background: rgba(15,23,42,0.95);
-  padding: 30px;
-  border-radius: 18px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  transform: translateY(-20px);
-  opacity: 0;
-  transition: all 0.4s ease;
+  padding:35px;
+  border-radius:20px;
+  text-align:center;
+  width:90%;
+  max-width:400px;
+  transform:scale(0.9);
+  transition:transform 0.4s ease;
 }
-
-#walletPopup.active #walletContent {
-  transform: translateY(0);
-  opacity: 1;
-}
-
+#walletPopup.show #walletContent { transform:scale(1); }
 #walletContent input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  text-align: center;
-  margin-bottom: 15px;
+  width:100%;
+  padding:14px;
+  border-radius:8px;
+  border:none;
+  text-align:center;
+  margin-bottom:18px;
+  font-size:16px;
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 34px; }
-  .hero p { font-size: 18px; }
-  .carousel { height: 260px; }
-  .img-button img { width: 170px; height: 70px; }
+@media(max-width:768px){
+  .hero h1{font-size:36px;}
+  .hero p{font-size:18px;}
+  .carousel{height:280px;}
+  .img-button img{width:170px;height:70px;}
 }
 </style>
 </head>
+
 <body>
 
 <!-- HEADER -->
 <header class="hero">
-  <div class="avatar-hex">
-    <img src="profile.jpg" alt="Profile">
-  </div>
+  <div class="avatar-hex"><img src="profile.jpg" alt="Profile"></div>
   <h1>NinjaRoninN</h1>
   <p>Content Creator • Guides • Portfolio</p>
 </header>
@@ -298,7 +264,6 @@ footer h2 {
 <!-- PORTFOLIO -->
 <section class="section">
   <h2>Portfolio</h2>
-
   <div class="carousel" id="carousel">
     <span class="arrow left" onclick="prevSlide()">❮</span>
     <img src="obra1.png" class="active">
@@ -310,50 +275,25 @@ footer h2 {
     <img src="obra7.png">
     <img src="obra8.png">
     <img src="obra9.png">
-    <img src="obra10.png">
+    <img src="obra10.jpg">
     <span class="arrow right" onclick="nextSlide()">❯</span>
   </div>
-
-  <a class="portfolio-link" target="_blank"
-     href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp">
-     View Full Portfolio
-  </a>
+  <a class="portfolio-link" target="_blank" href="https://drive.google.com/drive/folders/1CHXYbOOOUuHB0Pa9hznVHM76bN2YKhmp">View Full Portfolio</a>
 </section>
 
 <!-- GUIDES -->
 <section class="section">
   <h2>Guides</h2>
-
-  <button class="img-button" onclick="toggleGuides()">
-    <img src="button_base.png">
-    <span>GUIDES</span>
-  </button>
-
+  <button class="img-button" onclick="toggleGuides()"><img src="button_base.png"><span>GUIDES</span></button>
   <div id="guidesMenu" class="dropdown-content">
-    <button class="img-button" onclick="toggleSub('mokuMenu')">
-      <img src="button_base.png">
-      <span>MOKU</span>
-    </button>
+    <button class="img-button" onclick="toggleSub('mokuMenu')"><img src="button_base.png"><span>MOKU</span></button>
     <div id="mokuMenu" class="sub-buttons">
-      <a href="moku_guide1.html" class="img-button">
-        <img src="button_base.png">
-        <span>Contest Guide</span>
-      </a>
-      <a href="moku_guide2.html" class="img-button">
-        <img src="button_base.png">
-        <span>Beginner Guide</span>
-      </a>
+      <a href="moku_guide1.html" class="img-button"><img src="button_base.png"><span>Contest Guide</span></a>
+      <a href="moku_guide2.html" class="img-button"><img src="button_base.png"><span>Beginner Guide</span></a>
     </div>
-
-    <button class="img-button" onclick="toggleSub('moreMenu')">
-      <img src="button_base.png">
-      <span>COMING SOON</span>
-    </button>
+    <button class="img-button" onclick="toggleSub('moreMenu')"><img src="button_base.png"><span>COMING SOON</span></button>
     <div id="moreMenu" class="sub-buttons">
-      <div class="img-button">
-        <img src="button_base.png">
-        <span>Future Guides</span>
-      </div>
+      <div class="img-button"><img src="button_base.png"><span>Future Guides</span></div>
     </div>
   </div>
 </section>
@@ -370,8 +310,7 @@ footer h2 {
 <div id="walletPopup">
   <div id="walletContent">
     <h3>Support the Creator</h3>
-    <input type="text" id="walletAddress"
-      value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
+    <input type="text" id="walletAddress" value="0x298e5dd73995fb5f8708ac1c0b4da1c13dbd6dab" readonly>
     <br><br>
     <button id="copyBtn">Copy Wallet</button>
     <button id="closeBtn" style="background:red;margin-left:10px;">Close</button>
@@ -380,71 +319,51 @@ footer h2 {
 
 <script>
 /* ===== CAROUSEL ===== */
-let index = 0;
-const slides = document.querySelectorAll("#carousel img");
+let index=0;
+const slides=document.querySelectorAll("#carousel img");
+function showSlide(i){slides.forEach(s=>s.classList.remove("active"));slides[i].classList.add("active");}
+function nextSlide(){index=(index+1)%slides.length;showSlide(index);}
+function prevSlide(){index=(index-1+slides.length)%slides.length;showSlide(index);}
 
-function showSlide(i){
-  slides.forEach(s => s.classList.remove("active"));
-  slides[i].classList.add("active");
-}
+// AUTOMATIC CAROUSEL
+setInterval(nextSlide,5000);
 
-function nextSlide(){
-  index = (index + 1) % slides.length;
-  showSlide(index);
-}
-
-function prevSlide(){
-  index = (index - 1 + slides.length) % slides.length;
-  showSlide(index);
-}
-
-/* ===== DROPDOWN GUIDES ===== */
-function toggleGuides(){
-  document.getElementById("guidesMenu").classList.toggle("show");
-}
-
-function toggleSub(id){
-  document.getElementById(id).classList.toggle("active");
-}
+/* ===== DROPDOWN ===== */
+function toggleGuides(){document.getElementById("guidesMenu").classList.toggle("show");}
+function toggleSub(id){document.getElementById(id).classList.toggle("active");}
 
 /* ===== WALLET POPUP ===== */
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded",function(){
+  const supportBtn=document.getElementById("supportBtn");
+  const walletPopup=document.getElementById("walletPopup");
+  const closeBtn=document.getElementById("closeBtn");
+  const copyBtn=document.getElementById("copyBtn");
+  const walletInput=document.getElementById("walletAddress");
 
-  const supportBtn = document.getElementById("supportBtn");
-  const walletPopup = document.getElementById("walletPopup");
-  const walletContent = document.getElementById("walletContent");
-  const closeBtn = document.getElementById("closeBtn");
-  const copyBtn = document.getElementById("copyBtn");
-  const walletInput = document.getElementById("walletAddress");
-
-  // OPEN POPUP
-  supportBtn.addEventListener("click", () => {
-    walletPopup.classList.add("active");
-    walletPopup.style.display = "flex";
+  supportBtn.addEventListener("click",()=>{
+    walletPopup.style.display="flex";
+    setTimeout(()=>walletPopup.classList.add("show"),10);
   });
 
-  // CLOSE POPUP
-  closeBtn.addEventListener("click", () => {
-    walletPopup.classList.remove("active");
-    setTimeout(()=> walletPopup.style.display="none", 400);
+  closeBtn.addEventListener("click",()=>{
+    walletPopup.classList.remove("show");
+    setTimeout(()=>walletPopup.style.display="none",400);
   });
 
-  // COPY WALLET
-  copyBtn.addEventListener("click", () => {
+  copyBtn.addEventListener("click",()=>{
     navigator.clipboard.writeText(walletInput.value)
-      .then(() => alert("Wallet copied to clipboard!"))
-      .catch(() => alert("Failed to copy wallet."));
+      .then(()=>alert("Wallet copied!"))
+      .catch(()=>alert("Failed to copy wallet."));
   });
 
-  // CLOSE WHEN CLICK OUTSIDE
-  walletPopup.addEventListener("click", (e) => {
-    if(e.target === walletPopup){
-      walletPopup.classList.remove("active");
-      setTimeout(()=> walletPopup.style.display="none", 400);
+  walletPopup.addEventListener("click",(e)=>{
+    if(e.target===walletPopup){
+      walletPopup.classList.remove("show");
+      setTimeout(()=>walletPopup.style.display="none",400);
     }
   });
-
 });
 </script>
+
 </body>
 </html>
